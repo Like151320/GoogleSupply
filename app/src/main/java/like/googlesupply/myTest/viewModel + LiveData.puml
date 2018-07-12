@@ -1,0 +1,20 @@
+@startuml
+
+class Activity{
+页面逻辑()
+}
+class ViewModel{
+
+}
+class LiveData{
+操作数据逻辑()
+}
+class Data{
+}
+
+Activity --* ViewModel
+ViewModel --o LiveData
+Activity --> LiveData
+LiveData --* Data
+
+@enduml
