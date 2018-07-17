@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt' // 启用时UserDao 系列无法生成实现类
 
 apply plugin: 'kotlin-android-extensions'
 
@@ -36,10 +37,12 @@ dependencies {
     implementation "android.arch.lifecycle:runtime:$lifecycle"
     implementation "android.arch.lifecycle:extensions:$lifecycle"
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle"
+//    kapt "android.arch.lifecycle:compiler:$lifecycle"
     //    implementation "android.arch.lifecycle:common-java8:$lifecycle"
     //    ROOM = "1.1.0"
     implementation "android.arch.persistence.room:runtime:$room"
-    annotationProcessor "android.arch.persistence.room:compiler:$room"
+//    annotationProcessor "android.arch.persistence.room:compiler:$room"
+    kapt "android.arch.persistence.room:compiler:$room"
     //    implementation "android.arch.persistence.room:rxjava2:$room"
     //    implementation "android.arch.persistence.room:testing:$room"
     //    implementation = "android.arch.lifecycle:common-java8:1.1.1"
@@ -49,3 +52,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
     implementation 'io.reactivex:rxkotlin:2.0.0-RC1'
 }
+
+//启用Kotlin注解生成文件
+//kapt {
+//    generateStubs = true
+//}
+

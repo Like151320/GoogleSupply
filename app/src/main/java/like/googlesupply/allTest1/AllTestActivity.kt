@@ -19,6 +19,7 @@ class AllTestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_test)
 
+        //位置变化时更新UI
         val locationLiveData: LiveData<Location> = LocationLiveData(this)
         locationLiveData.observe({ lifecycle }) {
             Log.i("Li_ke", "更新UI:$it")

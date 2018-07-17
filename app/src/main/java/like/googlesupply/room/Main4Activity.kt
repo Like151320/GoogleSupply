@@ -1,6 +1,5 @@
 package like.googlesupply.room
 
-import android.arch.persistence.room.Room
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -12,7 +11,7 @@ import like.googlesupply.R.id.all
 
 class Main4Activity : AppCompatActivity() {
     //生成数据库实例
-    val userDatabase by lazy { Room.databaseBuilder(applicationContext, UserDatabase::class.java, "userDatabase.db").build() }
+    val userDatabase by lazy { UserDatabase.getInstance(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

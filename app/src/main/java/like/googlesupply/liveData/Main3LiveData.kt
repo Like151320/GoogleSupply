@@ -14,6 +14,7 @@ LiveData - 存活数据
 使用 LiveData 为数据添加观察方式
 自定义 LiveData 为单例
  */
+//继承LiveData 实现自定义单个数据
 object Main3LiveData : LiveData<Int>() {
 
     private val mainHandler = Handler(Looper.getMainLooper())

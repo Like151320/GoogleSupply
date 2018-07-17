@@ -17,4 +17,15 @@ class Main2ViewModel : ViewModel() {
         Log.d("Li_ke", "getCurrentTime()")
         return timeLiveData
     }
+
+    private fun test() {
+        //3、改变数据
+        timeLiveData.value = "str"//只能在主线程使用
+        timeLiveData.postValue("str")//可在子线程使用
+    }
+
+    //没有任何绑定的View时触发
+    override fun onCleared() {
+        super.onCleared()
+    }
 }

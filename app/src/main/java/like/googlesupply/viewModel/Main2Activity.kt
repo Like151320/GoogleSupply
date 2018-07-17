@@ -24,14 +24,14 @@ ViewModule - 视图模型
  */
 class Main2Activity : AppCompatActivity() {
 
-    private lateinit var viewModel: Main2ViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         supportActionBar?.title = "Data 与 View 生命周期管理框架"
 
         //1、注册 Fragment/Activity，使用反射获取 ViewModel 实例
-        viewModel = ViewModelProviders.of(this).get(Main2ViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get("KEY",Main2ViewModel::class.java)
 
         //2、添加监听：当 ViewModel 的某个值改变时进行显示
         viewModel.getCurrentTime().observe({ lifecycle }) { time ->
@@ -45,5 +45,18 @@ class Main2Activity : AppCompatActivity() {
         }
 
         btn_jumpNextDataActivity.setOnClickListener { startActivity(Intent(this, Main3Activity::class.java)) }
+        btn_jumpModelActivity.setOnClickListener { startActivity(Intent(this, Main21Activity::class.java)) }
     }
 }
+
+/*
+意图将 LiveData 从Activity2 传给 Activity21，
+但是 ViewModel 可以以Activity为主，跨Fragment使用，却不能夸Activity使用。
+LiveData 可以设为单例，但是单例会占用整个生命周期的内存。
+若使用单例+手动实现API进行内存优化，那么就要面对把数据保存在哪里的问题。
+
+如果是在多个Activity间共享数据的LiveData，需设为单例，或创建统一的LiveDataManager来获取其引用。
+而内存的管理应当手动实现，在有Activity时开始，在所有Activity退出后清空。清空内存意味着单例只占用一个对象的内存，即可以忽略了。
+
+
+ */

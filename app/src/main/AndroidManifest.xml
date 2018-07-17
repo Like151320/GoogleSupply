@@ -12,20 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".lifecycle.MainActivity">
-        </activity>
-        <activity android:name=".viewModel.Main2Activity" />
-        <activity android:name=".liveData.Main3Activity" />
-        <activity android:name=".room.Main4Activity" />
-        <activity android:name=".allTest1.AllTestActivity" />
-        <activity android:name=".transformations.TransformationsActivity" />
-        <activity android:name=".myTest.MyTestActivity">
+        <activity android:name=".lifecycle.MainActivity" />
+        <activity android:name=".viewModel.Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".liveData.Main3Activity" />
+        <activity android:name=".room.Main4Activity" />
+        <activity android:name=".allTest1.AllTestActivity" />
+        <activity android:name=".transformations.TransformationsActivity" />
+        <activity android:name=".myTest.MyTestActivity" />
+        <activity android:name=".roomKotlin.RoomKotlinActivity" />
+        <activity android:name=".viewModel.Main21Activity" />
     </application>
 
 </manifest>
